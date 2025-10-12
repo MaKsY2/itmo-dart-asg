@@ -82,13 +82,10 @@ class Tester {
         print('TestExpectation of $srcName is null');
         continue;
       }
-      mapStruct[srcName] = ComparableFiles(testFile, testExpectation);
+      mapStruct[srcName] = ComparableFiles(testFile, testExpectation, srcName);
     }
-
     for (final comparableFiles in mapStruct.values) {
-      print(
-        'Comparing ${comparableFiles.first.path} and ${comparableFiles.second.path}',
-      );
+      stdout.write('Comparing ${comparableFiles.name}....');
       final result = await _isFilesIdentical(
         comparableFiles.first,
         comparableFiles.second,
@@ -102,12 +99,15 @@ class Tester {
     File secondEntity,
   ) async {
     if (!await firstEntity.exists() || !await secondEntity.exists()) {
+      print(
+          'FALSE BECAUSE: ${firstEntity.path} or ${secondEntity.path} does not exist');
       return false;
     }
 
     final firstStat = await firstEntity.stat();
     final secondStat = await secondEntity.stat();
     if (firstStat.size != secondStat.size) {
+      print('FALSE BECAUSE: ${firstStat.size} != ${secondStat.size}');
       return false;
     }
 
@@ -123,10 +123,16 @@ class Tester {
         final toRead = math.min(_chunkSize, remaining);
         final readA = await firstRaf.readInto(firstBuffer, 0, toRead);
         final readB = await secondRaf.readInto(secondBuffer, 0, toRead);
-        if (readA != readB) return false;
+        if (readA != readB) {
+          print('FALSE BECAUSE: $readA != $readB');
+          return false;
+        }
 
         for (var i = 0; i < readA; i++) {
-          if (firstBuffer[i] != secondBuffer[i]) return false;
+          if (firstBuffer[i] != secondBuffer[i]) {
+            print('FALSE BECAUSE: ${firstBuffer[i]} != ${secondBuffer[i]}');
+            return false;
+          }
         }
         remaining -= readA;
       }
@@ -139,13 +145,14 @@ class Tester {
 }
 
 class ComparableFiles {
-  File first;
-  File second;
-  ComparableFiles(this.first, this.second);
+  final File first;
+  final File second;
+  final String name;
+  ComparableFiles(this.first, this.second, this.name);
 }
 
 class FilesWithNames {
-  String name;
-  File file;
+  final String name;
+  final File file;
   FilesWithNames(this.file, this.name);
 }

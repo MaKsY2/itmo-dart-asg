@@ -10,6 +10,6 @@ void main() async {
     final lexer = Lexer(source: testSource.value);
     lexer.lex();
     await tester.writeResults(testSource.key, lexer.getTokensAsString());
-    tester.checkResultes();
   }
+  tester.checkResultes();
 }
