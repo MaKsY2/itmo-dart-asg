@@ -17,6 +17,9 @@ class Lexer {
   String get _c => _ch(_i);
   String get _n => _ch(_i + 1);
 
+  String getTokensAsString() =>
+      tokens.map((token) => token.toString()).join('\n');
+
   void lex() {
     while (!_eof) {
       final c = _c;
