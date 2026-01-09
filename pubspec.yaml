@@ -1,5 +1,5 @@
 name: itmo_dart_asg
-description: A sample command-line application.
+description: Abstract Semantic Graph builder for Dart programs
 version: 1.0.0
 repository: https://github.com/MaKsY2/itmo-dart-asg
 
@@ -7,6 +7,7 @@ environment:
   sdk: ^3.5.4
 
 dependencies:
+  analyzer: ^7.7.1
   path: ^1.9.1
   collection: ^1.19.1
 

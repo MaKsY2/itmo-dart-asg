@@ -1,0 +1,30 @@
+digraph ASG {
+  rankdir=TB;
+  node [shape=box, style=rounded];
+
+  node_0 [label="CompilationUnit\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_1 [label="MyClass\n(Class)", shape=component, fillcolor="#FFF4E6", style="filled,rounded"];
+  node_2 [label="myMethod\n(Function)", shape=ellipse, fillcolor="#E8F4F8", style="filled,rounded", tooltip="void myMethod"];
+  node_3 [label="Block\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_4 [label="print\n(MethodCall)", shape=ellipse, fillcolor="#D1C4E9", style="filled,rounded", tooltip="Call: print"];
+  node_5 [label="Hello, world\n(Literal)", shape=plaintext, fillcolor="#E1F5FE", style="filled,rounded"];
+  node_6 [label="main\n(Function)", shape=ellipse, fillcolor="#E8F4F8", style="filled,rounded", tooltip="void main"];
+  node_7 [label="Block\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_8 [label="myClass\n(Variable)", shape=box, fillcolor="#E8F5E9", style="filled,rounded", tooltip="MyClass myClass"];
+  node_9 [label="MyClass\n(MethodCall)", shape=ellipse, fillcolor="#D1C4E9", style="filled,rounded", tooltip="Call: MyClass"];
+  node_10 [label="myMethod\n(MethodCall)", shape=ellipse, fillcolor="#D1C4E9", style="filled,rounded", tooltip="Call: myMethod"];
+
+  node_0 -> node_1 [label="defines", color="#F44336", style=solid, fontsize=10];
+  node_0 -> node_6 [label="defines", color="#F44336", style=solid, fontsize=10];
+  node_1 -> node_2 [label="defines", color="#F44336", style=solid, fontsize=10];
+  node_2 -> node_3 [label="body", color="#9E9E9E", style=solid, fontsize=10];
+  node_3 -> node_4 [label="call", color="#9C27B0", style=bold, fontsize=10];
+  node_4 -> node_5 [label="argument", color="#4CAF50", style=solid, fontsize=10];
+  node_6 -> node_7 [label="body", color="#9E9E9E", style=solid, fontsize=10];
+  node_7 -> node_8 [label="declares", color="#F44336", style=solid, fontsize=10];
+  node_7 -> node_9 [label="call", color="#9C27B0", style=bold, fontsize=10];
+  node_7 -> node_10 [label="call", color="#9C27B0", style=bold, fontsize=10];
+  node_7 -> node_7 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_8 -> node_9 [label="initializer", color="#4CAF50", style=solid, fontsize=10];
+  node_10 -> node_8 [label="target", color="#FF9800", style=dashed, fontsize=10];
+}

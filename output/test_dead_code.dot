@@ -1,0 +1,26 @@
+digraph ASG {
+  rankdir=TB;
+  node [shape=box, style=rounded];
+
+  node_0 [label="CompilationUnit\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_1 [label="main\n(Function)", shape=ellipse, fillcolor="#E8F4F8", style="filled,rounded", tooltip="void main"];
+  node_2 [label="Block\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_3 [label="if\n(IfStatement)", shape=diamond, fillcolor="#FFF9C4", style="filled,rounded"];
+  node_4 [label="true\n(Literal)", shape=plaintext, fillcolor="#E1F5FE", style="filled,rounded"];
+  node_5 [label="Block\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_6 [label="print\n(MethodCall)", shape=ellipse, fillcolor="#D1C4E9", style="filled,rounded", tooltip="Call: print"];
+  node_7 [label="always executed\n(Literal)", shape=plaintext, fillcolor="#E1F5FE", style="filled,rounded"];
+  node_8 [label="return\n(Return)", shape=house, fillcolor="#FFCDD2", style="filled,rounded"];
+
+  node_0 -> node_1 [label="defines", color="#F44336", style=solid, fontsize=10];
+  node_1 -> node_2 [label="body", color="#9E9E9E", style=solid, fontsize=10];
+  node_2 -> node_3 [label="statement", color="#9E9E9E", style=solid, fontsize=10];
+  node_2 -> node_2 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_2 -> node_2 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_3 -> node_4 [label="condition", color="#4CAF50", style=solid, fontsize=10];
+  node_3 -> node_5 [label="body", color="#9E9E9E", style=solid, fontsize=10];
+  node_5 -> node_6 [label="call", color="#9C27B0", style=bold, fontsize=10];
+  node_5 -> node_8 [label="statement", color="#9E9E9E", style=solid, fontsize=10];
+  node_5 -> node_5 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_6 -> node_7 [label="argument", color="#4CAF50", style=solid, fontsize=10];
+}

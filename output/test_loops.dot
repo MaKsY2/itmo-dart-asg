@@ -1,0 +1,58 @@
+digraph ASG {
+  rankdir=TB;
+  node [shape=box, style=rounded];
+
+  node_0 [label="CompilationUnit\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_1 [label="main\n(Function)", shape=ellipse, fillcolor="#E8F4F8", style="filled,rounded", tooltip="void main"];
+  node_2 [label="Block\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_3 [label="for\n(ForLoop)", shape=octagon, fillcolor="#FFE0B2", style="filled,rounded"];
+  node_4 [label="i\n(Variable)", shape=box, fillcolor="#E8F5E9", style="filled,rounded", tooltip="int i"];
+  node_5 [label="0\n(Literal)", shape=plaintext, fillcolor="#E1F5FE", style="filled,rounded"];
+  node_6 [label="Block\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_7 [label="print\n(MethodCall)", shape=ellipse, fillcolor="#D1C4E9", style="filled,rounded", tooltip="Call: print"];
+  node_8 [label="j\n(Variable)", shape=box, fillcolor="#E8F5E9", style="filled,rounded", tooltip="int j"];
+  node_9 [label="0\n(Literal)", shape=plaintext, fillcolor="#E1F5FE", style="filled,rounded"];
+  node_10 [label="while\n(WhileLoop)", shape=octagon, fillcolor="#FFE0B2", style="filled,rounded"];
+  node_11 [label="<\n(BinaryOperation)", shape=circle, fillcolor="#F8BBD0", style="filled,rounded", tooltip="Binary: <"];
+  node_12 [label="5\n(Literal)", shape=plaintext, fillcolor="#E1F5FE", style="filled,rounded"];
+  node_13 [label="Block\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_14 [label="print\n(MethodCall)", shape=ellipse, fillcolor="#D1C4E9", style="filled,rounded", tooltip="Call: print"];
+  node_15 [label="j++\n(Expression)", shape=box, fillcolor="#FFFFFF", style="filled,rounded"];
+  node_16 [label="k\n(Variable)", shape=box, fillcolor="#E8F5E9", style="filled,rounded", tooltip="int k"];
+  node_17 [label="0\n(Literal)", shape=plaintext, fillcolor="#E1F5FE", style="filled,rounded"];
+  node_18 [label="Block\n(Block)", shape=folder, fillcolor="#F5F5F5", style="filled,rounded"];
+  node_19 [label="print\n(MethodCall)", shape=ellipse, fillcolor="#D1C4E9", style="filled,rounded", tooltip="Call: print"];
+  node_20 [label="k++\n(Expression)", shape=box, fillcolor="#FFFFFF", style="filled,rounded"];
+
+  node_0 -> node_1 [label="defines", color="#F44336", style=solid, fontsize=10];
+  node_1 -> node_2 [label="body", color="#9E9E9E", style=solid, fontsize=10];
+  node_2 -> node_3 [label="statement", color="#9E9E9E", style=solid, fontsize=10];
+  node_2 -> node_8 [label="declares", color="#F44336", style=solid, fontsize=10];
+  node_2 -> node_2 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_2 -> node_10 [label="statement", color="#9E9E9E", style=solid, fontsize=10];
+  node_2 -> node_11 [label="expression", color="#9E9E9E", style=solid, fontsize=10];
+  node_2 -> node_2 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_2 -> node_16 [label="declares", color="#F44336", style=solid, fontsize=10];
+  node_2 -> node_2 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_2 -> node_18 [label="body", color="#9E9E9E", style=solid, fontsize=10];
+  node_2 -> node_2 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_3 -> node_4 [label="declares", color="#F44336", style=solid, fontsize=10];
+  node_3 -> node_6 [label="body", color="#9E9E9E", style=solid, fontsize=10];
+  node_4 -> node_5 [label="initializer", color="#4CAF50", style=solid, fontsize=10];
+  node_6 -> node_7 [label="call", color="#9C27B0", style=bold, fontsize=10];
+  node_7 -> node_4 [label="argument", color="#4CAF50", style=solid, fontsize=10];
+  node_8 -> node_9 [label="initializer", color="#4CAF50", style=solid, fontsize=10];
+  node_10 -> node_11 [label="condition", color="#4CAF50", style=solid, fontsize=10];
+  node_10 -> node_13 [label="body", color="#9E9E9E", style=solid, fontsize=10];
+  node_11 -> node_8 [label="left", color="#4CAF50", style=solid, fontsize=10];
+  node_11 -> node_12 [label="right", color="#4CAF50", style=solid, fontsize=10];
+  node_13 -> node_14 [label="call", color="#9C27B0", style=bold, fontsize=10];
+  node_13 -> node_15 [label="expression", color="#9E9E9E", style=solid, fontsize=10];
+  node_13 -> node_13 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_14 -> node_8 [label="argument", color="#4CAF50", style=solid, fontsize=10];
+  node_16 -> node_17 [label="initializer", color="#4CAF50", style=solid, fontsize=10];
+  node_18 -> node_19 [label="call", color="#9C27B0", style=bold, fontsize=10];
+  node_18 -> node_20 [label="expression", color="#9E9E9E", style=solid, fontsize=10];
+  node_18 -> node_18 [label="next", color="#2196F3", style=bold, fontsize=10];
+  node_19 -> node_16 [label="argument", color="#4CAF50", style=solid, fontsize=10];
+}
